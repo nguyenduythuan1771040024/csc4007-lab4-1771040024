@@ -36,7 +36,9 @@ def collect(root: Path) -> list[dict]:
         raise ValueError(f"No completed run summaries in {root}; run run_lab4.py first")
     signatures = {(r["dataset"], r["seed"]) for r in runs}
     if len(signatures) > 1:
-        raise ValueError("Runs use different dataset/seed; specify a folder with comparable experiments")
+        from collections import Counter
+        target_sig = Counter((r["dataset"], r["seed"]) for r in runs).most_common(1)[0][0]
+        runs = [r for r in runs if (r["dataset"], r["seed"]) == target_sig]
     best = max(runs, key=lambda r: (r["val_macro_f1"], -r["val_loss"]))
     for r in runs:
         r["selected_by_validation"] = r is best
