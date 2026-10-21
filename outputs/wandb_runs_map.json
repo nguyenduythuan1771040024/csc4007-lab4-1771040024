@@ -1,0 +1,18 @@
+{
+  "baseline_lstm": {
+    "url": "https://wandb.ai/1771040024-thuan/csc4007-lab4-lstm-gru/runs/jb6zgqst",
+    "id": "jb6zgqst"
+  },
+  "gru_baseline": {
+    "url": "https://wandb.ai/1771040024-thuan/csc4007-lab4-lstm-gru/runs/r2xuy21n",
+    "id": "r2xuy21n"
+  },
+  "bilstm": {
+    "url": "https://wandb.ai/1771040024-thuan/csc4007-lab4-lstm-gru/runs/0qj8i28v",
+    "id": "0qj8i28v"
+  },
+  "stacked_bigru": {
+    "url": "https://wandb.ai/1771040024-thuan/csc4007-lab4-lstm-gru/runs/kytpaf5a",
+    "id": "kytpaf5a"
+  }
+}

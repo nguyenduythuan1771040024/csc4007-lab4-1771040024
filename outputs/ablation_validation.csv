@@ -1,0 +1,5 @@
+run_name,dataset,seed,model_type,bidirectional,num_layers,max_len,hidden_dim,dropout,val_accuracy,val_macro_f1,val_loss,source,selected_by_validation
+baseline_lstm,imdb,42,lstm,False,1,256,128,0.3,0.7981333333333334,0.7976514524081562,0.4454408037344615,outputs\runs\baseline_lstm\metrics\metrics_summary.json,False
+bilstm,imdb,42,lstm,True,1,256,128,0.4,0.84,0.8399533830440497,0.38510872847239175,outputs\runs\bilstm\metrics\metrics_summary.json,False
+gru_baseline,imdb,42,gru,False,1,256,128,0.3,0.8637333333333334,0.8636788048552755,0.34190390412012733,outputs\runs\gru_baseline\metrics\metrics_summary.json,False
+stacked_bigru,imdb,42,gru,True,2,256,128,0.4,0.8688,0.8687926850464054,0.4232505978822708,outputs\runs\stacked_bigru\metrics\metrics_summary.json,True

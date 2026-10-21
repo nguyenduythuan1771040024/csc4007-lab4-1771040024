@@ -1,0 +1,13 @@
+{
+  "dataset": "imdb",
+  "run_name": "bilstm",
+  "seed": 42,
+  "model_type": "lstm",
+  "bidirectional": true,
+  "num_layers": 1,
+  "test_macro_f1": 0.8254359794228494,
+  "test_accuracy": 0.82548,
+  "best_val_macro_f1": 0.8399533830440497,
+  "wandb_enabled": true,
+  "wandb_mode": "online"
+}

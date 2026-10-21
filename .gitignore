@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.DS_Store
+.ipynb_checkpoints/
+wandb/
+outputs/**/*.pt
+outputs/**/*.pth
+outputs/**/*.bin
+*.log
+
+# Local Vietnamese corpora and student-level raw text
+/data/raw/*vietnews*.csv
+/data/raw/*VietNews*.csv
+**/vietnewssense*.csv
+**/VietNewsSense*.csv
+/outputs/runs/*/splits/
+/outputs/runs/*/predictions/
+/outputs/runs/*/error_analysis/*.csv
+/outputs/vietnews_lab4/article_fulltext*
+/outputs/vietnews_lab4/raw/
+/outputs/vietnews_lab4/audit_*/token_examples.csv

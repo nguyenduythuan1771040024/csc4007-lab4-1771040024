@@ -1,0 +1,16 @@
+{
+  "dataset_sha256": "ed2d3fdc37dbfb2e7be390cb70814c34d7acdab54b017b645e506bb9eb8eb06d",
+  "dataset_basename": "vietnewssense.csv",
+  "n_rows": 3268,
+  "test_rows_sha256": "c4721ec24b129063fa2401b0bce27a78599e55492d380a13cc3ae37dc3165258",
+  "seed": 42,
+  "max_rows": 1000,
+  "vocab_size": 20000,
+  "text_col": "content",
+  "label_col": "category",
+  "lengths": [
+    128,
+    256
+  ],
+  "tokenizer": "underthesea"
+}

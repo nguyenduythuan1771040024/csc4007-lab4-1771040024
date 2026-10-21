@@ -1,0 +1,62 @@
+{
+  "dataset": "imdb",
+  "run_name": "stacked_bigru",
+  "output_dir": "outputs\\runs\\stacked_bigru",
+  "dataset_path": null,
+  "seed": 42,
+  "device": "cuda",
+  "model_type": "gru",
+  "architecture": "Tokenized text -> Embedding -> recurrent encoder -> Dropout -> Linear classifier",
+  "bidirectional": true,
+  "num_layers": 2,
+  "vocab_size_requested": 20000,
+  "vocab_size_actual": 20000,
+  "max_len": 256,
+  "embed_dim": 128,
+  "hidden_dim": 128,
+  "dropout": 0.4,
+  "batch_size": 64,
+  "epochs_requested": 8,
+  "epochs_trained": 8,
+  "lr": 0.0008,
+  "weight_decay": 0.0001,
+  "patience": 2,
+  "splits": {
+    "train": 21250,
+    "val": 3750,
+    "test": 25000
+  },
+  "sequence_audit": {
+    "num_train_examples": 21250,
+    "vocab_size_actual": 20000,
+    "max_len": 256,
+    "length_min": 11,
+    "length_p25": 153.0,
+    "length_median": 213.0,
+    "length_p75": 348.0,
+    "length_p90": 561.0,
+    "length_max": 2819,
+    "truncated_count": 8324,
+    "truncated_rate": 0.3917176470588235,
+    "unk_token_count": 85638,
+    "non_pad_token_count": 4224232,
+    "unk_rate_after_vocab": 0.020273034246225112
+  },
+  "val": {
+    "loss": 0.4232505978822708,
+    "accuracy": 0.8688,
+    "macro_precision": 0.8688822623839884,
+    "macro_recall": 0.8688,
+    "macro_f1": 0.8687926850464054
+  },
+  "test": {
+    "loss": 0.47882740383625033,
+    "accuracy": 0.85336,
+    "macro_precision": 0.8537904265274955,
+    "macro_recall": 0.85336,
+    "macro_f1": 0.8533153853463885
+  },
+  "generated_at": "2026-10-16T08:16:39.137973+00:00",
+  "selection_rule": "Best checkpoint selected by validation macro-F1, final report on test split.",
+  "fair_comparison_note": "Compare variants using the same dataset, split protocol, seed, and metrics."
+}

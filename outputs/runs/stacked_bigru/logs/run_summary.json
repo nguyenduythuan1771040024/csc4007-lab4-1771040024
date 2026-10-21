@@ -1,0 +1,13 @@
+{
+  "dataset": "imdb",
+  "run_name": "stacked_bigru",
+  "seed": 42,
+  "model_type": "gru",
+  "bidirectional": true,
+  "num_layers": 2,
+  "test_macro_f1": 0.8533153853463885,
+  "test_accuracy": 0.85336,
+  "best_val_macro_f1": 0.8687926850464054,
+  "wandb_enabled": true,
+  "wandb_mode": "online"
+}
