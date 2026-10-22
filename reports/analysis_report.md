@@ -103,11 +103,21 @@ Tất cả các run đều sử dụng cùng tập dữ liệu IMDB, cùng hạt
 - **Mối quan hệ giữa kiến trúc mô hình và chất lượng dữ liệu:**  
   Kiến trúc tốt (LSTM/GRU) giúp khai thác triệt để trật tự từ và phụ thuộc dài hạn. Tuy nhiên, trần hiệu năng ~85.3% cũng phản ánh giới hạn của việc học embedding từ đầu (from scratch) trên 21k mẫu mà không có tri thức tiền huấn luyện (như BERT/RoBERTa).
 
+![Ablation Comparison](../outputs/figures/ablation_comparison.png)
+
 ---
 
 ## 6. Phân tích Learning Curves
 
-Dựa trên các biểu đồ huấn luyện được sinh tự động tại `outputs/runs/<run_name>/figures/`:
+Dựa trên các biểu đồ huấn luyện được trích xuất tại `outputs/figures/` và `outputs/runs/<run_name>/figures/`:
+
+![Learning Curves Comparison](../outputs/figures/learning_curves_comparison.png)
+
+*Biểu đồ huấn luyện chi tiết của mô hình tốt nhất (`stacked_bigru`):*
+
+| Training vs Validation Loss | Accuracy and Macro-F1 |
+|:---:|:---:|
+| ![Loss Curve](../outputs/figures/loss_curve.png) | ![Metric Curve](../outputs/figures/metric_curve.png) |
 
 1. **Đường cong Loss (Loss Curve):**  
    - Ở `gru_baseline`, Train Loss giảm đều đặn từ 0.67 down 0.14. Val Loss giảm liên tục từ 0.61 xuống mức thấp nhất **0.3419** ở Epoch 5.
@@ -122,7 +132,15 @@ Dựa trên các biểu đồ huấn luyện được sinh tự động tại `o
 
 ## 7. Phân tích Confusion Matrix
 
-Trích xuất từ ma trận nhầm lẫn của mô hình được chọn trên 25,000 mẫu test:
+Trích xuất từ ma trận nhầm lẫn của mô hình trên 25,000 mẫu test:
+
+![Confusion Matrix Comparison](../outputs/figures/confusion_matrix_comparison.png)
+
+*Ma trận nhầm lẫn chi tiết của mô hình được chọn (`stacked_bigru`):*
+
+<p align="center">
+  <img src="../outputs/figures/confusion_matrix.png" alt="Confusion Matrix Stacked BiGRU" width="450"/>
+</p>
 
 - **Tổng số mẫu dự đoán sai:** 3,666 mẫu trên 25,000 mẫu (tỷ lệ lỗi 14.66%).
 - **False Negative (FN):** 2,051 mẫu (thực tế Positive nhưng đoán thành Negative).
