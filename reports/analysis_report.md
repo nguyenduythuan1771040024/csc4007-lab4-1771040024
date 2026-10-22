@@ -198,15 +198,41 @@ Trích xuất từ file [outputs/runs/stacked_bigru/error_analysis/error_analysi
 
 ---
 
-## 10. Tự đánh giá và Kết luận
+## 10. Part B — Đánh giá chuyển giao ngữ cảnh dài trên VietNewsSense (Vietnamese Long-Context Transfer)
+
+Báo cáo phân tích chuyên sâu đầy đủ được lưu tại file: [reports/vietnews_transfer_lab4.md](file:///C:/NLP/lab4/csc4007-lab4-1771040024/reports/vietnews_transfer_lab4.md).
+
+### Bảng số liệu kiểm toán chuỗi (So sánh 128 vs 256):
+
+| Tokenizer | max_len | N test | P95 Len (token) | UNK Rate | Truncation Rate | Avg Padding Ratio |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| **underthesea** | **128** | 200 | 1,173.0 | 4.24% | **99.00%** | 0.45% |
+| **underthesea** | **256** | 200 | 1,173.0 | 4.24% | **91.50%** | 2.62% |
+| **whitespace** | **128** | 200 | 1,399.6 | 3.93% | **99.00%** | 0.42% |
+| **whitespace** | **256** | 200 | 1,399.6 | 3.93% | **93.50%** | 1.97% |
+
+### Tóm tắt phát hiện then chốt:
+1. **Truncation Rate cao vượt trội:** Ở ngưỡng `max_len = 256`, vẫn có hơn **91.5% bài báo tiếng Việt bị cắt ngắn**.
+2. **Khảo sát 3 bài báo dài nhất (Held-out Test):**
+   - Bài Dòng 306 (Kinh doanh, 1,935 tokens): Mất tới **1,679 token (86.77% dung lượng bài báo)** ở Vùng C.
+   - Bài Dòng 1381 (Kinh doanh, 1,727 tokens): Mất **1,471 token (85.18% dung lượng)**.
+   - Bài Dòng 954 (Kinh doanh, 1,619 tokens): Mất **1,363 token (84.19% dung lượng)**.
+3. **Phân biệt Truncation và Long-range Dependency:**
+   - Việc nâng cấp lên LSTM/GRU chỉ giúp mô hình ghi nhớ tốt hơn giữa các token *còn nằm trong cửa sổ 256 bước* (Long-range Dependency).
+   - LSTM/GRU **không thể khôi phục** bất kỳ thông tin nào đã bị cắt cơ học ở ngoài cửa sổ 256 bước (Truncation).
+   - Với văn bản báo chí tiếng Việt dài, giải pháp trong thực tế phải là **Hierarchical Attention Networks (HAN)**, **Chunking** hoặc **Long-context Pretrained Transformers (PhoBERT/Longformer)** chứ không phải tăng `max_len` của RNN lên vô hạn.
+
+---
+
+## 11. Tự đánh giá và Kết luận
 
 - [x] Đã lưu từng run riêng biệt trong `outputs/runs/` (`baseline_lstm`, `gru_baseline`, `bilstm`, `stacked_bigru`).
 - [x] Đã chọn mô hình tốt nhất dựa trên Validation Metric trước khi đánh giá trên Test set.
 - [x] Đã chạy baseline LSTM bắt buộc và 3 biến thể nâng cấp (GRU, BiLSTM, Stacked BiGRU).
 - [x] Đã đồng bộ toàn bộ 4 run lên Weights & Biases cá nhân.
 - [x] Đã lưu checkpoint tối ưu `best_model.pt` cho từng mô hình.
-- [x] Đã phân tích chi tiết Learning curves và Confusion matrix.
+- [x] Đã phân tích chi tiết Learning curves và Confusion matrix với hình ảnh trực quan.
 - [x] Đã phân tích lỗi sâu trên 10 mẫu test tiêu biểu.
 - [x] Đã so sánh đối chiếu đa chiều với kết quả RNN của Lab 3.
 - [x] Đã trả lời đầy đủ 10 câu hỏi thảo luận cuối bài.
-- [x] Đã hoàn thành Part B VietNewsSense Transfer Check tại [reports/vietnews_transfer_lab4.md](file:///C:/NLP/lab4/csc4007-lab4-1771040024/reports/vietnews_transfer_lab4.md).
+- [x] Đã hoàn thành toàn diện Part B VietNewsSense Transfer Check tại [reports/vietnews_transfer_lab4.md](file:///C:/NLP/lab4/csc4007-lab4-1771040024/reports/vietnews_transfer_lab4.md).
